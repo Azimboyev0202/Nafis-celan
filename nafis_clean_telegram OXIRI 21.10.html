@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -33,6 +32,7 @@
   .card-top-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
   .card.selected .card-top-accent{transform:scaleX(1)}
   .card-emoji{font-size:32px;margin-bottom:6px;display:block;text-align:center}
+  .card-img{width:100%;height:110px;object-fit:contain;border-radius:8px;margin-bottom:6px;background:#131E29;display:block}
   .card-name{font-weight:700;font-size:13px;color:var(--white);line-height:1.3;margin-bottom:8px;min-height:34px}
   .card-price{color:var(--accent);font-family:'Nunito',sans-serif;font-weight:900;font-size:16px}
   .card-price small{font-size:10px;color:var(--gray);font-weight:600}
@@ -98,6 +98,75 @@
   .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--red);color:white;padding:10px 22px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:500;white-space:nowrap}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .input-label{font-size:11px;color:var(--gray);font-weight:600;margin-bottom:2px}
+
+  /* ADMIN */
+  .admin-btn{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;background:#2A3F54;border:2px solid var(--accent);color:white;font-size:20px;cursor:pointer;z-index:300;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+  .admin-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+  .admin-overlay.open{display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px}
+  .admin-panel{background:var(--navy);border-radius:16px;border:2px solid var(--accent);width:100%;max-width:600px;margin:auto}
+  .admin-header{padding:16px 20px;border-bottom:2px solid #2A3F54;display:flex;align-items:center;justify-content:space-between}
+  .admin-header h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--accent)}
+  .admin-close{width:34px;height:34px;border-radius:8px;background:#2A3F54;border:none;color:white;font-size:18px;cursor:pointer}
+  .admin-login{padding:30px 20px;display:flex;flex-direction:column;gap:12px}
+  .admin-login input{background:#131E29;border:2px solid #2A3F54;border-radius:8px;padding:12px;color:white;font-size:15px;outline:none;width:100%}
+  .admin-login input:focus{border-color:var(--accent)}
+  .admin-login-btn{background:var(--accent);color:var(--dark);border:none;border-radius:10px;padding:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;cursor:pointer;width:100%}
+  .admin-body{padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+  .admin-add-btn{background:var(--blue);color:white;border:none;border-radius:10px;padding:10px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;width:100%}
+  .admin-product{background:var(--card);border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;border:1px solid #2A3F54}
+  .admin-product img{width:48px;height:48px;object-fit:contain;border-radius:6px;background:#131E29;flex-shrink:0}
+  .admin-product-info{flex:1;min-width:0}
+  .admin-product-name{font-size:13px;font-weight:700;color:white;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .admin-product-price{font-size:12px;color:var(--accent);font-weight:700}
+  .admin-edit-btn{background:var(--blue);color:white;border:none;border-radius:7px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+  .admin-del-btn{background:var(--red);color:white;border:none;border-radius:7px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+  .admin-form-overlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.8);align-items:center;justify-content:center;padding:20px}
+  .admin-form-overlay.open{display:flex}
+  .admin-form{background:var(--navy);border-radius:16px;border:2px solid var(--accent);padding:20px;width:100%;max-width:400px;display:flex;flex-direction:column;gap:12px}
+  .admin-form h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;color:var(--accent)}
+  .admin-form input,.admin-form select{background:#131E29;border:2px solid #2A3F54;border-radius:8px;padding:10px 12px;color:white;font-size:14px;outline:none;width:100%}
+  .admin-form input:focus,.admin-form select:focus{border-color:var(--accent)}
+  .admin-form select option{background:var(--navy)}
+  .admin-form-label{font-size:11px;color:var(--gray);font-weight:600;margin-bottom:-8px}
+  .admin-form-btns{display:flex;gap:8px}
+  .admin-save-btn{flex:1;background:var(--accent);color:var(--dark);border:none;border-radius:10px;padding:11px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;cursor:pointer}
+  .admin-cancel-btn{background:#2A3F54;color:white;border:none;border-radius:10px;padding:11px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer}
+  .admin-img-preview{width:80px;height:80px;object-fit:contain;border-radius:8px;background:#131E29;border:2px solid #2A3F54}
+
+  /* ADMIN */
+  .admin-btn{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;background:#2A3F54;border:2px solid var(--accent);color:white;font-size:20px;cursor:pointer;z-index:300;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+  .admin-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+  .admin-overlay.open{display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px}
+  .admin-panel{background:var(--navy);border-radius:16px;border:2px solid var(--accent);width:100%;max-width:600px;margin:auto}
+  .admin-header{padding:16px 20px;border-bottom:2px solid #2A3F54;display:flex;align-items:center;justify-content:space-between}
+  .admin-header h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--accent)}
+  .admin-close{width:34px;height:34px;border-radius:8px;background:#2A3F54;border:none;color:white;font-size:18px;cursor:pointer}
+  .admin-login{padding:30px 20px;display:flex;flex-direction:column;gap:12px}
+  .admin-login input{background:#131E29;border:2px solid #2A3F54;border-radius:8px;padding:12px;color:white;font-size:15px;outline:none;width:100%}
+  .admin-login input:focus{border-color:var(--accent)}
+  .admin-login-btn{background:var(--accent);color:var(--dark);border:none;border-radius:10px;padding:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;cursor:pointer;width:100%}
+  .admin-body{padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+  .admin-add-btn{background:var(--blue);color:white;border:none;border-radius:10px;padding:10px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;width:100%}
+  .admin-product{background:var(--card);border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;border:1px solid #2A3F54}
+  .admin-product img{width:48px;height:48px;object-fit:contain;border-radius:6px;background:#131E29;flex-shrink:0}
+  .admin-product-info{flex:1;min-width:0}
+  .admin-product-name{font-size:13px;font-weight:700;color:white;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .admin-product-price{font-size:12px;color:var(--accent);font-weight:700}
+  .admin-edit-btn{background:var(--blue);color:white;border:none;border-radius:7px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+  .admin-del-btn{background:var(--red);color:white;border:none;border-radius:7px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
+  .admin-form-overlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.8);align-items:center;justify-content:center;padding:20px}
+  .admin-form-overlay.open{display:flex}
+  .admin-form{background:var(--navy);border-radius:16px;border:2px solid var(--accent);padding:20px;width:100%;max-width:400px;display:flex;flex-direction:column;gap:12px}
+  .admin-form h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;color:var(--accent)}
+  .admin-form input,.admin-form select{background:#131E29;border:2px solid #2A3F54;border-radius:8px;padding:10px 12px;color:white;font-size:14px;outline:none;width:100%}
+  .admin-form input:focus,.admin-form select:focus{border-color:var(--accent)}
+  .admin-form select option{background:var(--navy)}
+  .admin-form-label{font-size:11px;color:var(--gray);font-weight:600;margin-bottom:-8px}
+  .admin-form-btns{display:flex;gap:8px}
+  .admin-save-btn{flex:1;background:var(--accent);color:var(--dark);border:none;border-radius:10px;padding:11px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;cursor:pointer}
+  .admin-cancel-btn{background:#2A3F54;color:white;border:none;border-radius:10px;padding:11px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer}
+  .admin-img-preview{width:80px;height:80px;object-fit:contain;border-radius:8px;background:#131E29;border:2px solid #2A3F54}
+
 </style>
 </head>
 <body>
@@ -170,70 +239,70 @@ const BOT_TOKEN = '7598061066:AAG7Jd0IgiPGZjAGiu6Gq97azmG_gzyphW0';
 const CHAT_ID = '333844532';
 
 const products=[
-  {id:1,cat:'kimyo',name:'Gras gaz (pushti)',price:32000,emoji:'🧴'},
-  {id:2,cat:'kimyo',name:'Grass gaz qora',price:32000,emoji:'🧴'},
-  {id:3,cat:'kimyo',name:'Gras gold',price:30000,emoji:'✨'},
-  {id:4,cat:'kimyo',name:'Tala gel 1 KG',price:23000,emoji:'🪣'},
-  {id:5,cat:'kimyo',name:'Tala gel KG (katta)',price:95000,emoji:'🪣'},
-  {id:6,cat:'kimyo',name:'Pol uchun gel 3L',price:50000,emoji:'🧹'},
-  {id:7,cat:'kimyo',name:"Suyuq so'vin (Milana)",price:96000,emoji:'🫧'},
-  {id:8,cat:'kimyo',name:'Krot (trubalarga)',price:18000,emoji:'🔧'},
-  {id:9,cat:'kimyo',name:"Oq kir so'vin katta",price:25000,emoji:'🧼'},
-  {id:10,cat:'kimyo',name:'Grass azilit qozon',price:24000,emoji:'🍳'},
-  {id:11,cat:'kimyo',name:'Grass azilit gaz',price:24000,emoji:'🔥'},
-  {id:12,cat:'kimyo',name:'Domestos 950ml',price:23000,emoji:'🚽'},
-  {id:13,cat:'kimyo',name:'Domestos 1L',price:26000,emoji:'🚽'},
-  {id:14,cat:'kimyo',name:'Domestos 1.25L',price:32000,emoji:'🚽'},
-  {id:15,cat:'kimyo',name:'Bumaga big Rulon 226',price:17000,emoji:'🧻'},
-  {id:16,cat:'kimyo',name:'RULON ECO',price:16000,emoji:'🧻'},
-  {id:17,cat:'latta',name:'Pollata mikor 85/70',price:23000,emoji:'🧹'},
-  {id:18,cat:'latta',name:'Pollata mikor 60/40',price:18000,emoji:'🧹'},
-  {id:19,cat:'latta',name:'Pollata mikor 1m',price:30000,emoji:'🧹'},
-  {id:20,cat:'latta',name:"Ollatta arzon 1M",price:23000,emoji:'🧺'},
-  {id:21,cat:'latta',name:'Pollatta arzon 50sm',price:14500,emoji:'🧺'},
-  {id:22,cat:'latta',name:'Momiq sifat latta',price:18000,emoji:'🪣'},
-  {id:23,cat:'latta',name:"Yangi yo'l so'vin",price:5500,emoji:'🧼'},
-  {id:24,cat:'latta',name:"Oq kir so'vin kichik",price:23000,emoji:'🧼'},
-  {id:25,cat:'latta',name:"Oq kir so'vin katta",price:25000,emoji:'🧼'},
-  {id:26,cat:'xushbo',name:'Air time (spray)',price:13500,emoji:'🌸'},
-  {id:27,cat:'xushbo',name:'Sunny day (spray)',price:18500,emoji:'🌞'},
-  {id:28,cat:'xushbo',name:'Glade',price:38000,emoji:'🌺'},
-  {id:29,cat:'xushbo',name:'AIR weik (zapsalka)',price:55000,emoji:'💨'},
-  {id:30,cat:'xushbo',name:'Chopil asvijitil (arzoni)',price:55000,emoji:'🪷'},
-  {id:31,cat:'xushbo',name:'Chopil asvijitil (qimmati)',price:85000,emoji:'💐'},
-  {id:32,cat:'bumaga',name:'Bumaga 6 ta',price:15000,emoji:'🧻'},
-  {id:33,cat:'bumaga',name:'Bumaga 8 ta',price:18000,emoji:'🧻'},
-  {id:34,cat:'bumaga',name:'Bumaga 10 ta',price:24000,emoji:'🧻'},
-  {id:35,cat:'bumaga',name:'Bumaga big Rulon 226',price:23000,emoji:'🧻'},
-  {id:36,cat:'bumaga',name:'Bumaga big Rulon 160',price:14500,emoji:'🧻'},
-  {id:37,cat:'bumaga',name:'Salfetka Z (180 ta)',price:13000,emoji:'📋'},
-  {id:38,cat:'bumaga',name:'Salfetka Z (150 ta)',price:12000,emoji:'📋'},
-  {id:39,cat:'bumaga',name:'Rulon 2 tali',price:15000,emoji:'🧻'},
-  {id:40,cat:'bumaga',name:'Bumaga big Rulon 226 (2ta)',price:15500,emoji:'🧻'},
-  {id:41,cat:'bumaga',name:'RULON ECO',price:16000,emoji:'♻️'},
-  {id:42,cat:'bumaga',name:'Nam salfetka 120 ta',price:8000,emoji:'💧'},
-  {id:43,cat:'bumaga',name:'Nam salfetka 100 ta',price:6000,emoji:'💧'},
-  {id:44,cat:'bumaga',name:'Nam salfetka 25 ta',price:15000,emoji:'💧'},
-  {id:45,cat:'bumaga',name:'Musur paket 10L qimmat',price:25000,emoji:'🗑'},
-  {id:46,cat:'bumaga',name:'Musur paket 10L arzon',price:10000,emoji:'🗑'},
-  {id:47,cat:'bumaga',name:'Musur paket bak (qimmat)',price:25000,emoji:'🗑'},
-  {id:48,cat:'bumaga',name:'Musur paket bak (arzon)',price:9500,emoji:'🗑'},
-  {id:49,cat:'qolqop',name:'Perchatka Nitril XL',price:45000,emoji:'🧤'},
-  {id:50,cat:'qolqop',name:'Perchatka Nitril L',price:45000,emoji:'🧤'},
-  {id:51,cat:'qolqop',name:'Perchatka Nitril M',price:45000,emoji:'🧤'},
-  {id:52,cat:'kimyo',name:'Poma lux',price:12000,emoji:'🧴'},
-  {id:53,cat:'kimyo',name:'Barf',price:10000,emoji:'🧴'},
-  {id:54,cat:'kimyo',name:'Rashka',price:10000,emoji:'🧴'},
-  {id:55,cat:'latta',name:'Diflin latta',price:10000,emoji:'🧹'},
-  {id:56,cat:'latta',name:'Niso polatta',price:25000,emoji:'🧹'},
-  {id:57,cat:'kimyo',name:'Idish gubka',price:10000,emoji:'🫧'},
-  {id:58,cat:'kimyo',name:'Verita rangli qozon sochiq',price:10000,emoji:'🧽'},
-  {id:59,cat:'kimyo',name:'Tarakan dori maz',price:20000,emoji:'🐛'},
-  {id:60,cat:'kimyo',name:'Tarakan dori kukun',price:25000,emoji:'🐛'},
-  {id:61,cat:'kimyo',name:'Tarakan dori spray',price:65000,emoji:'💨'},
-  {id:62,cat:'kimyo',name:"Suyuq so'vin o'rmon mevali",price:96000,emoji:'🫧'},
-  {id:63,cat:'kimyo',name:"Suyuq so'vin aloy",price:96000,emoji:'🫧'},
-  {id:64,cat:'kimyo',name:"Suyuq so'vin asal",price:96000,emoji:'🍯'},
+  {id:1,cat:'kimyo',name:'Gras gaz (pushti)',price:32000,img:'https://i.ibb.co/gZw9R6NM/6234lnqce43varrz6kd1nnmft3qm923e.jpg',emoji:'🧴'},
+  {id:2,cat:'kimyo',name:'Grass gaz qora',price:32000,img:'https://i.ibb.co/dJmLwwZX/Sredstvo-chistyashchee-AZELIT-PRO-Antizhir-dlya-kukhni-600ml-126091kupit-v-internet-magazine-APlayn.jpg',emoji:'🧴'},
+  {id:3,cat:'kimyo',name:'Gras gold',price:30000,img:'https://i.ibb.co/1tgNsrH7/263-1200x900.webp',emoji:'✨'},
+  {id:4,cat:'kimyo',name:'Tala gel 1 KG',price:23000,img:'https://i.ibb.co/FbGWHdmv/images-2.jpg',emoji:'🪣'},
+  {id:5,cat:'kimyo',name:'Tala gel KG (katta)',price:95000,img:'https://i.ibb.co/FbGWHdmv/images-2.jpg',emoji:'🪣'},
+  {id:6,cat:'kimyo',name:'Pol uchun gel 3L',price:50000,img:'https://i.ibb.co/DPQgSsyZ/Gemini-Generated-Image-tm8zkatm8zkatm8z.png',emoji:'🧹'},
+  {id:7,cat:'kimyo',name:"Suyuq so'vin (Milana)",price:96000,img:'https://i.ibb.co/fGVj8L28/photo-1-2026-05-11-13-37-22.jpg',emoji:'🫧'},
+  {id:8,cat:'kimyo',name:'Krot (trubalarga)',price:18000,img:'https://i.ibb.co/4nrH3P74/Gemini-Generated-Image-i2g1xii2g1xii2g1.png',emoji:'🔧'},
+  {id:9,cat:'kimyo',name:"Oq kir so'vin katta",price:25000,img:'https://i.ibb.co/21svnKjh/6817ed74-76c9-4fc9-b0b5-2e0923860fb5.jpg',emoji:'🧼'},
+  {id:10,cat:'kimyo',name:'Grass azilit qozon',price:24000,img:'https://i.ibb.co/Sw3dDXxN/32a89e9a-d05e-43a2-8ed5-598d540fffe9.jpg',emoji:'🍳'},
+  {id:11,cat:'kimyo',name:'Grass azilit gaz',price:24000,img:'https://i.ibb.co/rfx0gnms/orig.webp',emoji:'🔥'},
+  {id:12,cat:'kimyo',name:'Domestos 950ml',price:23000,img:'https://i.ibb.co/k2ZYNJh7/773f1ed2-a664-448b-a943-a9ff1b72a94e.jpg',emoji:'🚽'},
+  {id:13,cat:'kimyo',name:'Domestos 1L',price:26000,img:'https://i.ibb.co/k2ZYNJh7/773f1ed2-a664-448b-a943-a9ff1b72a94e.jpg',emoji:'🚽'},
+  {id:14,cat:'kimyo',name:'Domestos 1.25L',price:32000,img:'https://i.ibb.co/k2ZYNJh7/773f1ed2-a664-448b-a943-a9ff1b72a94e.jpg',emoji:'🚽'},
+  {id:15,cat:'kimyo',name:'Bumaga big Rulon 226',price:17000,img:'https://i.ibb.co/tps9hy9P/Gemini-Generated-Image-bp6ew9bp6ew9bp6e-1.png',emoji:'🧻'},
+  {id:16,cat:'kimyo',name:'RULON ECO',price:16000,img:'https://i.ibb.co/xKxgnbWd/Gemini-Generated-Image-4zslu34zslu34zsl-1.png',emoji:'🧻'},
+  {id:17,cat:'latta',name:'Pollata mikor 85/70',price:23000,img:'https://i.ibb.co/N6HK0J85/bd47c0c4-cfe8-4a18-b94a-9c694107cae4.jpg',emoji:'🧹'},
+  {id:18,cat:'latta',name:'Pollata mikor 60/40',price:18000,img:'https://i.ibb.co/N6HK0J85/bd47c0c4-cfe8-4a18-b94a-9c694107cae4.jpg',emoji:'🧹'},
+  {id:19,cat:'latta',name:'Pollata mikor 1m',price:30000,img:'https://i.ibb.co/5XyYQFrp/e34bb647-6128-4606-985c-4b3373d080eb.jpg',emoji:'🧹'},
+  {id:20,cat:'latta',name:"Ollatta arzon 1M",price:23000,img:'https://i.ibb.co/3xsfNVJ/c50e35f1-263b-4fb8-a0fa-55c3a7e093fe.jpg',emoji:'🧺'},
+  {id:21,cat:'latta',name:'Pollatta arzon 50sm',price:14500,img:'https://i.ibb.co/3xsfNVJ/c50e35f1-263b-4fb8-a0fa-55c3a7e093fe.jpg',emoji:'🧺'},
+  {id:22,cat:'latta',name:'Momiq sifat latta',price:18000,img:'https://i.ibb.co/zh83S3gY/098595cf-c860-4c93-983d-d7e6568f7115.jpg',emoji:'🪣'},
+  {id:23,cat:'latta',name:"Yangi yo'l so'vin",price:5500,img:'https://i.ibb.co/5Q76NGT/f0c8927c-eb60-469f-b548-b70763c24437.jpg',emoji:'🧼'},
+  {id:24,cat:'latta',name:"Oq kir so'vin kichik",price:23000,img:'https://i.ibb.co/21svnKjh/6817ed74-76c9-4fc9-b0b5-2e0923860fb5.jpg',emoji:'🧼'},
+  {id:25,cat:'latta',name:"Oq kir so'vin katta",price:25000,img:'https://i.ibb.co/21svnKjh/6817ed74-76c9-4fc9-b0b5-2e0923860fb5.jpg',emoji:'🧼'},
+  {id:26,cat:'xushbo',name:'Air time (spray)',price:13500,img:'https://i.ibb.co/sdhy2wsJ/3e9ace73-d956-4ef7-a802-45bd9ceb64be.jpg',emoji:'🌸'},
+  {id:27,cat:'xushbo',name:'Sunny day (spray)',price:18500,img:'https://i.ibb.co/qLp0PHHp/images.jpg',emoji:'🌞'},
+  {id:28,cat:'xushbo',name:'Glade',price:38000,img:'https://i.ibb.co/RpRqb21g/download.jpg',emoji:'🌺'},
+  {id:29,cat:'xushbo',name:'AIR weik (zapsalka)',price:55000,img:'https://i.ibb.co/CpWCNnTf/images-1.jpg',emoji:'💨'},
+  {id:30,cat:'xushbo',name:'Chopil asvijitil (arzoni)',price:55000,img:'https://i.ibb.co/XgXFmW9/aromadiffuzor-loreva-lavanda-55ml-86342-0.jpg',emoji:'🪷'},
+  {id:31,cat:'xushbo',name:'Chopil asvijitil (qimmati)',price:85000,img:'https://i.ibb.co/XgXFmW9/aromadiffuzor-loreva-lavanda-55ml-86342-0.jpg',emoji:'💐'},
+  {id:32,cat:'bumaga',name:'Bumaga 6 ta',price:15000,img:'https://i.ibb.co/pjyXqDXY/Gemini-Generated-Image-k0hb6dk0hb6dk0hb-2-1.png',emoji:'🧻'},
+  {id:33,cat:'bumaga',name:'Bumaga 8 ta',price:18000,img:'https://i.ibb.co/JwNjDVW1/Gemini-Generated-Image-z7xslgz7xslgz7xs-1.png',emoji:'🧻'},
+  {id:34,cat:'bumaga',name:'Bumaga 10 ta',price:24000,img:'https://i.ibb.co/LhbhmFKy/Gemini-Generated-Image-32ubfr32ubfr32ub-1.png',emoji:'🧻'},
+  {id:35,cat:'bumaga',name:'Bumaga big Rulon 226',price:23000,img:'https://i.ibb.co/tps9hy9P/Gemini-Generated-Image-bp6ew9bp6ew9bp6e-1.png',emoji:'🧻'},
+  {id:36,cat:'bumaga',name:'Bumaga big Rulon 160',price:14500,img:'https://i.ibb.co/spS7JNG6/Gemini-Generated-Image-1e4qj91e4qj91e4q-1.png',emoji:'🧻'},
+  {id:37,cat:'bumaga',name:'Salfetka Z (180 ta)',price:13000,img:'https://i.ibb.co/GvK7QbJT/Gemini-Generated-Image-bys6hibys6hibys6-1.png',emoji:'📋'},
+  {id:38,cat:'bumaga',name:'Salfetka Z (150 ta)',price:12000,img:'https://i.ibb.co/GvK7QbJT/Gemini-Generated-Image-bys6hibys6hibys6-1.png',emoji:'📋'},
+  {id:39,cat:'bumaga',name:'Rulon 2 tali',price:15000,img:'https://i.ibb.co/gbYpMKQp/Gemini-Generated-Image-bl2f18bl2f18bl2f-1.png',emoji:'🧻'},
+  {id:40,cat:'bumaga',name:'Bumaga big Rulon 226 (2ta)',price:15500,img:'https://i.ibb.co/tpbGNnFM/Gemini-Generated-Image-k8r7bbk8r7bbk8r7-1.png',emoji:'🧻'},
+  {id:41,cat:'bumaga',name:'RULON ECO',price:16000,img:'https://i.ibb.co/xKxgnbWd/Gemini-Generated-Image-4zslu34zslu34zsl-1.png',emoji:'♻️'},
+  {id:42,cat:'bumaga',name:'Nam salfetka 120 ta',price:8000,img:'https://i.ibb.co/yFT9sdjK/Gemini-Generated-Image-ecwniuecwniuecwn-1.png',emoji:'💧'},
+  {id:43,cat:'bumaga',name:'Nam salfetka 100 ta',price:6000,img:'https://i.ibb.co/JFc8CNrT/Gemini-Generated-Image-ekiks8ekiks8ekik-1.png',emoji:'💧'},
+  {id:44,cat:'bumaga',name:'Nam salfetka 25 ta',price:15000,img:'https://i.ibb.co/8DjbkhDJ/Gemini-Generated-Image-yqq6wayqq6wayqq6-1.png',emoji:'💧'},
+  {id:45,cat:'bumaga',name:'Musur paket 10L qimmat',price:25000,img:'https://i.ibb.co/PzmXZ096/Gemini-Generated-Image-sppkbbsppkbbsppk-2.png',emoji:'🗑'},
+  {id:46,cat:'bumaga',name:'Musur paket 10L arzon',price:10000,img:'https://i.ibb.co/PzmXZ096/Gemini-Generated-Image-sppkbbsppkbbsppk-2.png',emoji:'🗑'},
+  {id:47,cat:'bumaga',name:'Musur paket bak (qimmat)',price:25000,img:'https://i.ibb.co/nsCtZRfX/Gemini-Generated-Image-69470w69470w6947-1.png',emoji:'🗑'},
+  {id:48,cat:'bumaga',name:'Musur paket bak (arzon)',price:9500,img:'https://i.ibb.co/nsCtZRfX/Gemini-Generated-Image-69470w69470w6947-1.png',emoji:'🗑'},
+  {id:49,cat:'qolqop',name:'Perchatka Nitril XL',price:45000,img:'https://i.ibb.co/jPR3zssv/Gemini-Generated-Image-dtjhjzdtjhjzdtjh-1.png',emoji:'🧤'},
+  {id:50,cat:'qolqop',name:'Perchatka Nitril L',price:45000,img:'https://i.ibb.co/3yV9Vm2f/Gemini-Generated-Image-48ubbh48ubbh48ub-1.png',emoji:'🧤'},
+  {id:51,cat:'qolqop',name:'Perchatka Nitril M',price:45000,img:'https://i.ibb.co/Ps28vG5z/Gemini-Generated-Image-kk05twkk05twkk05-1.png',emoji:'🧤'},
+  {id:52,cat:'kimyo',name:'Poma lux',price:12000,img:'https://i.ibb.co/Y7bJPQgz/photo-3-2026-05-11-13-39-41.jpg',emoji:'🧴'},
+  {id:53,cat:'kimyo',name:'Barf',price:10000,img:'https://i.ibb.co/0yMHBQj4/photo-2-2026-05-11-13-39-41.jpg',emoji:'🧴'},
+  {id:54,cat:'kimyo',name:'Rashka',price:10000,img:'https://i.ibb.co/20XyLTxQ/photo-1-2026-05-11-13-39-41.jpg',emoji:'🧴'},
+  {id:55,cat:'latta',name:'Diflin latta',price:10000,img:'https://i.ibb.co/Dfdmfkzn/0f17dad757ecb06573d55bf054ce22712024051010431435350-Incdaxt-U13-jpg.webp',emoji:'🧹'},
+  {id:56,cat:'latta',name:'Niso polatta',price:25000,img:'https://i.ibb.co/tMY44gMP/184.webp',emoji:'🧹'},
+  {id:57,cat:'kimyo',name:'Idish gubka',price:10000,img:'https://i.ibb.co/cK7sr1qQ/image.webp',emoji:'🫧'},
+  {id:58,cat:'kimyo',name:'Verita rangli qozon sochiq',price:10000,img:'https://i.ibb.co/6zkRzWk/72728fcd-b4b5-42a8-a772-b88d80c97fb3-jpg-500x500-q85-crop-scale.jpg',emoji:'🧽'},
+  {id:59,cat:'kimyo',name:'Tarakan dori maz',price:20000,img:'https://i.ibb.co/21r5ZX38/photo-3-2026-05-11-15-55-42.jpg',emoji:'🐛'},
+  {id:60,cat:'kimyo',name:'Tarakan dori kukun',price:25000,img:'https://i.ibb.co/whb1986P/photo-2-2026-05-11-15-55-42.jpg',emoji:'🐛'},
+  {id:61,cat:'kimyo',name:'Tarakan dori spray',price:65000,img:'https://i.ibb.co/HTJ7NBkq/photo-1-2026-05-11-15-55-42.jpg',emoji:'💨'},
+  {id:62,cat:'kimyo',name:"Suyuq so'vin o'rmon mevali",price:96000,img:'https://i.ibb.co/wNszfdmx/photo-4-2026-05-11-13-37-22.jpg',emoji:'🫧'},
+  {id:63,cat:'kimyo',name:"Suyuq so'vin aloy",price:96000,img:'https://i.ibb.co/d4LhqYLY/photo-2-2026-05-11-13-37-22.jpg',emoji:'🫧'},
+  {id:64,cat:'kimyo',name:"Suyuq so'vin asal",price:96000,img:'https://i.ibb.co/fGVj8L28/photo-1-2026-05-11-13-37-22.jpg',emoji:'🍯'},
 ];
 
 let cart={},currentCat='all',searchQuery='';
@@ -255,7 +324,7 @@ function renderGrid(){
 function cardHTML(p){
   const inCart=cart[p.id]||0;
   const sel=inCart>0?'selected':'';
-  return `<div class="card ${sel}" id="card-${p.id}"><div class="card-top-accent"></div><span class="card-emoji">${p.emoji}</span><div class="card-name">${p.name}</div><div class="card-price">${(p.price/1000).toFixed(1)}K <small>so'm</small></div><div class="qty-row"><button class="qty-btn qty-minus" onclick="changeQty(${p.id},-1)">−</button><input class="qty-val" id="qty-${p.id}" type="number" min="0" value="${inCart}" onchange="setQty(${p.id},this.value)" onclick="this.select()"><button class="qty-btn qty-plus" onclick="changeQty(${p.id},1)">+</button></div><button class="add-btn ${inCart>0?'added':''}" onclick="addToCart(${p.id})" id="abtn-${p.id}">${inCart>0?"✅ Korzinkada":"🛒 Qo'shish"}</button></div>`;
+  return `<div class="card ${sel}" id="card-${p.id}"><div class="card-top-accent"></div><img class="card-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="card-emoji" style="display:none">${p.emoji}</span><div class="card-name">${p.name}</div><div class="card-price">${(p.price/1000).toFixed(1)}K <small>so'm</small></div><div class="qty-row"><button class="qty-btn qty-minus" onclick="changeQty(${p.id},-1)">−</button><input class="qty-val" id="qty-${p.id}" type="number" min="0" value="${inCart}" onchange="setQty(${p.id},this.value)" onclick="this.select()"><button class="qty-btn qty-plus" onclick="changeQty(${p.id},1)">+</button></div><button class="add-btn ${inCart>0?'added':''}" onclick="addToCart(${p.id})" id="abtn-${p.id}">${inCart>0?"✅ Korzinkada":"🛒 Qo'shish"}</button></div>`;
 }
 
 function changeQty(id,delta){const current=cart[id]||0;const newVal=Math.max(0,current+delta);if(newVal===0)delete cart[id];else cart[id]=newVal;updateCardUI(id);updateCartUI()}
@@ -287,7 +356,7 @@ function cartItems(){return Object.entries(cart).map(([id,qty])=>{const p=produc
 function renderCartItems(items){
   const el=document.getElementById('cartItems');
   if(items.length===0){el.innerHTML=`<div class="cart-empty"><div class="big">🛒</div>Korzinka bo'sh</div>`;return}
-  el.innerHTML=items.map(item=>`<div class="cart-item"><span class="ci-emoji">${item.emoji}</span><div class="ci-info"><div class="ci-name">${item.name}</div><div class="ci-price-row"><div class="ci-qty-wrap"><button class="ci-qbtn minus" onclick="changeQty(${item.id},-1)">−</button><span class="ci-qty">${item.qty}</span><button class="ci-qbtn plus" onclick="changeQty(${item.id},1)">+</button></div><span style="font-size:11px;color:var(--gray);margin-left:4px">× ${(item.price/1000).toFixed(1)}K</span></div></div><div style="text-align:right"><div class="ci-subtotal">${fmt(item.subtotal)}</div></div><button class="ci-del" onclick="removeItem(${item.id})">✕</button></div>`).join('');
+  el.innerHTML=items.map(item=>`<div class="cart-item"><img src="${item.img}" alt="${item.name}" style="width:36px;height:36px;object-fit:contain;border-radius:6px;background:#131E29;flex-shrink:0" onerror="this.style.display='none'"><div class="ci-info"><div class="ci-name">${item.name}</div><div class="ci-price-row"><div class="ci-qty-wrap"><button class="ci-qbtn minus" onclick="changeQty(${item.id},-1)">−</button><span class="ci-qty">${item.qty}</span><button class="ci-qbtn plus" onclick="changeQty(${item.id},1)">+</button></div><span style="font-size:11px;color:var(--gray);margin-left:4px">× ${(item.price/1000).toFixed(1)}K</span></div></div><div style="text-align:right"><div class="ci-subtotal">${fmt(item.subtotal)}</div></div><button class="ci-del" onclick="removeItem(${item.id})">✕</button></div>`).join('');
 }
 
 function removeItem(id){delete cart[id];updateCardUI(id);updateCartUI()}
@@ -383,6 +452,164 @@ function searchProducts(q){searchQuery=q;renderGrid()}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 
 renderGrid();updateCartUI();
+
+// ===== ADMIN PANEL =====
+const ADMIN_PASS = 'nafis2024';
+let adminLoggedIn = false;
+let editingId = null;
+let localProducts = JSON.parse(localStorage.getItem('nafis_products')||'null');
+if(localProducts && localProducts.length > 0){
+  products.splice(0,products.length,...localProducts);
+  renderGrid();
+}
+
+function saveProducts(){localStorage.setItem('nafis_products',JSON.stringify(products))}
+function openAdmin(){document.getElementById('adminOverlay').classList.add('open')}
+function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open')}
+
+function adminLogin(){
+  const pass=document.getElementById('adminPass').value;
+  if(pass===ADMIN_PASS){
+    adminLoggedIn=true;
+    document.getElementById('adminLoginSection').style.display='none';
+    document.getElementById('adminBodySection').style.display='flex';
+    renderAdminList();
+  } else {
+    document.getElementById('adminPassErr').textContent='Parol noto\'g\'ri!';
+  }
+}
+
+function renderAdminList(){
+  const el=document.getElementById('adminList');
+  el.innerHTML=products.map(p=>`
+    <div class="admin-product">
+      <img src="${p.img}" alt="${p.name}" onerror="this.src=''">
+      <div class="admin-product-info">
+        <div class="admin-product-name">${p.name}</div>
+        <div class="admin-product-price">${(p.price/1000).toFixed(1)}K so'm</div>
+      </div>
+      <button class="admin-edit-btn" onclick="openEditForm(${p.id})">✏️</button>
+      <button class="admin-del-btn" onclick="deleteProduct(${p.id})">🗑</button>
+    </div>
+  `).join('');
+}
+
+function openEditForm(id){
+  editingId=id;
+  const p=products.find(x=>x.id===id);
+  document.getElementById('formTitle').textContent='Mahsulot tahrirlash';
+  document.getElementById('fName').value=p.name;
+  document.getElementById('fPrice').value=p.price;
+  document.getElementById('fImg').value=p.img;
+  document.getElementById('fCat').value=p.cat;
+  document.getElementById('fEmoji').value=p.emoji;
+  document.getElementById('fImgPreview').src=p.img;
+  document.getElementById('adminFormOverlay').classList.add('open');
+}
+
+function openAddForm(){
+  editingId=null;
+  document.getElementById('formTitle').textContent='Yangi mahsulot';
+  document.getElementById('fName').value='';
+  document.getElementById('fPrice').value='';
+  document.getElementById('fImg').value='';
+  document.getElementById('fCat').value='kimyo';
+  document.getElementById('fEmoji').value='🧴';
+  document.getElementById('fImgPreview').src='';
+  document.getElementById('adminFormOverlay').classList.add('open');
+}
+
+function closeForm(){document.getElementById('adminFormOverlay').classList.remove('open')}
+
+function previewImg(){
+  const url=document.getElementById('fImg').value;
+  document.getElementById('fImgPreview').src=url;
+}
+
+function saveForm(){
+  const name=document.getElementById('fName').value.trim();
+  const price=parseInt(document.getElementById('fPrice').value);
+  const img=document.getElementById('fImg').value.trim();
+  const cat=document.getElementById('fCat').value;
+  const emoji=document.getElementById('fEmoji').value.trim()||'📦';
+  if(!name||!price){alert('Nom va narx kiritilishi shart!');return}
+  if(editingId){
+    const idx=products.findIndex(x=>x.id===editingId);
+    products[idx]={...products[idx],name,price,img,cat,emoji};
+  } else {
+    const newId=Math.max(...products.map(x=>x.id))+1;
+    products.push({id:newId,cat,name,price,img,emoji});
+  }
+  saveProducts();
+  renderGrid();
+  renderAdminList();
+  closeForm();
+}
+
+function deleteProduct(id){
+  if(!confirm('Mahsulotni o\'chirasizmi?'))return;
+  const idx=products.findIndex(x=>x.id===id);
+  products.splice(idx,1);
+  if(cart[id]){delete cart[id];updateCartUI();}
+  saveProducts();
+  renderGrid();
+  renderAdminList();
+}
+
 </script>
+
+<!-- ADMIN BTN -->
+<button class="admin-btn" onclick="openAdmin()" title="Admin panel">⚙️</button>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay" onclick="if(event.target.id==='adminOverlay')closeAdmin()">
+  <div class="admin-panel">
+    <div class="admin-header">
+      <h2>⚙️ Admin Panel</h2>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div id="adminLoginSection" class="admin-login">
+      <div style="font-size:13px;color:var(--gray)">Parolni kiriting</div>
+      <input type="password" id="adminPass" placeholder="Parol..." onkeydown="if(event.key==='Enter')adminLogin()">
+      <div id="adminPassErr" style="color:var(--red);font-size:12px;font-weight:700"></div>
+      <button class="admin-login-btn" onclick="adminLogin()">🔐 Kirish</button>
+    </div>
+    <div id="adminBodySection" class="admin-body" style="display:none">
+      <button class="admin-add-btn" onclick="openAddForm()">➕ Yangi mahsulot qo'shish</button>
+      <div id="adminList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT/ADD FORM -->
+<div class="admin-form-overlay" id="adminFormOverlay">
+  <div class="admin-form">
+    <h3 id="formTitle">Tahrirlash</h3>
+    <div class="admin-form-label">Mahsulot nomi</div>
+    <input type="text" id="fName" placeholder="Masalan: Domestos 1L">
+    <div class="admin-form-label">Narx (so'm)</div>
+    <input type="number" id="fPrice" placeholder="Masalan: 26000">
+    <div class="admin-form-label">Rasm link (ibb.co)</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="text" id="fImg" placeholder="https://i.ibb.co/..." oninput="previewImg()" style="flex:1">
+      <img id="fImgPreview" class="admin-img-preview" src="" onerror="this.src=''">
+    </div>
+    <div class="admin-form-label">Kategoriya</div>
+    <select id="fCat">
+      <option value="kimyo">🧴 Kimyoviy</option>
+      <option value="latta">🧹 Pol Latta</option>
+      <option value="bumaga">🧻 Bumaga</option>
+      <option value="xushbo">🌸 Xushboy</option>
+      <option value="qolqop">🧤 Qolqop</option>
+    </select>
+    <div class="admin-form-label">Emoji</div>
+    <input type="text" id="fEmoji" placeholder="🧴" maxlength="4">
+    <div class="admin-form-btns">
+      <button class="admin-cancel-btn" onclick="closeForm()">Bekor</button>
+      <button class="admin-save-btn" onclick="saveForm()">💾 Saqlash</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
