@@ -32,7 +32,11 @@
   .card-top-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
   .card.selected .card-top-accent{transform:scaleX(1)}
   .card-emoji{font-size:32px;margin-bottom:6px;display:block;text-align:center}
-  .card-img{width:100%;height:110px;object-fit:contain;border-radius:8px;margin-bottom:6px;background:#131E29;display:block}
+
+  .card-img{width:100%;height:100px;object-fit:contain;border-radius:8px;margin-bottom:6px;background:#131E29;display:block}
+  .card-img.loading{background: linear-gradient(90deg,#1a2a3a 25%,#2A3F54 50%,#1a2a3a 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
   .card-name{font-weight:700;font-size:13px;color:var(--white);line-height:1.3;margin-bottom:8px;min-height:34px}
   .card-price{color:var(--accent);font-family:'Nunito',sans-serif;font-weight:900;font-size:16px}
   .card-price small{font-size:10px;color:var(--gray);font-weight:600}
@@ -324,7 +328,7 @@ function renderGrid(){
 function cardHTML(p){
   const inCart=cart[p.id]||0;
   const sel=inCart>0?'selected':'';
-  return `<div class="card ${sel}" id="card-${p.id}"><div class="card-top-accent"></div><img class="card-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="card-emoji" style="display:none">${p.emoji}</span><div class="card-name">${p.name}</div><div class="card-price">${(p.price/1000).toFixed(1)}K <small>so'm</small></div><div class="qty-row"><button class="qty-btn qty-minus" onclick="changeQty(${p.id},-1)">−</button><input class="qty-val" id="qty-${p.id}" type="number" min="0" value="${inCart}" onchange="setQty(${p.id},this.value)" onclick="this.select()"><button class="qty-btn qty-plus" onclick="changeQty(${p.id},1)">+</button></div><button class="add-btn ${inCart>0?'added':''}" onclick="addToCart(${p.id})" id="abtn-${p.id}">${inCart>0?"✅ Korzinkada":"🛒 Qo'shish"}</button></div>`;
+  return `<div class="card ${sel}" id="card-${p.id}"><div class="card-top-accent"></div><img class="card-img loading" loading="lazy" onload="this.classList.remove('loading')" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="card-emoji" style="display:none">${p.emoji}</span><div class="card-name">${p.name}</div><div class="card-price">${(p.price/1000).toFixed(1)}K <small>so'm</small></div><div class="qty-row"><button class="qty-btn qty-minus" onclick="changeQty(${p.id},-1)">−</button><input class="qty-val" id="qty-${p.id}" type="number" min="0" value="${inCart}" onchange="setQty(${p.id},this.value)" onclick="this.select()"><button class="qty-btn qty-plus" onclick="changeQty(${p.id},1)">+</button></div><button class="add-btn ${inCart>0?'added':''}" onclick="addToCart(${p.id})" id="abtn-${p.id}">${inCart>0?"✅ Korzinkada":"🛒 Qo'shish"}</button></div>`;
 }
 
 function changeQty(id,delta){const current=cart[id]||0;const newVal=Math.max(0,current+delta);if(newVal===0)delete cart[id];else cart[id]=newVal;updateCardUI(id);updateCartUI()}
@@ -483,7 +487,7 @@ function renderAdminList(){
   const el=document.getElementById('adminList');
   el.innerHTML=products.map(p=>`
     <div class="admin-product">
-      <img src="${p.img}" alt="${p.name}" onerror="this.src=''">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src=''">
       <div class="admin-product-info">
         <div class="admin-product-name">${p.name}</div>
         <div class="admin-product-price">${(p.price/1000).toFixed(1)}K so'm</div>
